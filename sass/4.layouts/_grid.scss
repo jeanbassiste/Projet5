@@ -1,0 +1,40 @@
+#productList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+        }
+
+    @media only screen and (min-width: 1024px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1rem;
+        }
+
+
+
+.card {
+    border-radius: 10px;
+    max-width: 250px;
+    margin: auto;
+
+
+    img{
+        height: 145px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    h2 {
+        height: 75px;
+    }
+}
+
+}
+

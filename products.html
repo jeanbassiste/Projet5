@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <title>Page produit</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <header id="header">
+            <div class="container">
+                <div class="row">
+                    <nav class="flex-md-column navbar navbar-expand-md navbar-light">
+                        <a class="navbar-brand text-center" href="index-3.html" title="Accueil du site NavTest"><img src="./images/orinoco_logo.png" alt="Logo d'Orinoco" /></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div id="navbarContent" class="row collapse navbar-collapse">
+                            <ul class="navbar-nav">
+                                <li class="col-md-4 text-center nav-item active">
+                                    <a class="nav-link" href="index-3.html" title="Liste des produits">Nos produits</a>
+                                </li>
+                                <li class="col-md-4 text-center nav-item">
+                                    <a class="nav-link" href="..." title="Se connecter ou créer un compte">S'identifier</a>
+                                </li>
+                                <li class="col-md-4 text-center nav-item">
+                                    <a class="nav-link" href="cart.html" title="Voir le contenu de votre panier">Panier</a>
+                                </li>
+                            </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section id="ficheProduit" class="container">
+        <div class="row">
+            <img id="image_produit" class="col-12 col-md-6" alt="description produit" />
+            <div id="text_produit" class="col-12 col-md-6">
+                <h1 id="name_produit"></h1>
+                <p id="description_produit"></p>
+                <h2 id="price_produit"></h2>
+                <p id="cart"></p>
+                <form id="choix_couleur" class="my-3" action="" method="POST">
+                    <label for="color" class="fw-bold">Couleur :</label>
+                    <select name="couleur" id="couleur">
+                    </select>
+                </form>
+                <form class="my-3" action="" method="POST">
+                    <label for="quantity" class="fw-bold">Quantité :</label>
+                    <input id="qty" type="number" name="quantité" min="1" value="1" required="" onKeyDown="return false"/>
+                </form>
+                <button id="panier" class="btn btn-success rounded-pill my-3" type="button" data-bs-toggle="" data-bs-target="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>        
+                    <p>Ajouter au panier</p>                        
+                </button>
+            </div>
+        </div>
+        </section>
+
+        <footer id="footer" class="bg-secondary text-white">
+            <div class="container">
+                <ul id="footerItem" class="row list-inline text-left text-lg-center">
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:..." title="Contacter le service client">Service client</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir notre politique de confidentialité">Politique de confidentialité</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Lire nos conditions d'utilisation">Conditions générales de vente</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir le plan du site">Plan du site</a></li>
+                </ul>
+                <div class="row text-center">
+                    <p class="col">Orinoco ⓒ 2021</p>
+                </div>
+            </div>
+        </footer>
+        <script src="js/cart.js"></script>
+        <script src="js/product.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    </body>
+</html>

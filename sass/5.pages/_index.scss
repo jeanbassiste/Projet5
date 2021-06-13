@@ -1,0 +1,60 @@
+#carouselExampleIndicators {
+    height: 100%;
+}
+
+#jumbotron {
+    @media screen and (min-width: 768px){
+        height: 200px;
+    }
+}
+
+#imgJbtr {
+    height: 210px;
+    overflow: hidden;
+    @media screen and (max-width: 767px){
+        padding-right:0px;
+        padding-left:0px
+    }
+    @media screen and (min-width: 768px){
+        height: 95%;
+    }
+}
+
+#txtJbtr {
+
+    @media screen and (min-width: 768px){
+        margin:auto;
+    }
+}
+
+#content {
+
+
+    h2 {
+        padding-top: 5px;
+        font-size: 1.3rem;
+    }
+
+    p {
+        &#results {
+            padding-top: 6px;
+            padding-right:0px;
+        }
+    } 
+
+    .card {
+        padding: 0px;
+
+        img {
+            height: 150px;
+        }
+
+        svg {
+
+            @media screen and  (min-width: 768px) {
+                position: relative;
+                right: 3px;
+            }
+        }
+    }
+}

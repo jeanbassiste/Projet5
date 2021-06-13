@@ -1,0 +1,80 @@
+#panier {
+    padding: 1rem;
+
+    button {
+        margin-right: 1rem;
+    }
+
+    table {
+        width: 100%;
+        display: none;
+
+        thead {
+            display: none;
+            @media only screen and (min-width: 768px) {
+                display: table-header-group;
+ 
+                }
+            :nth-child(1){
+                text-align: start;
+            }    
+
+        }
+        th {
+            text-align:center    
+ 
+        }
+
+        #productThmb{
+            text-align: start;
+        }
+
+        img {
+            margin:auto;
+            height:50px;
+            width: 50px;
+            object-fit: cover;
+            display: none;
+
+            @media only screen and (min-width: 768px) {
+                display: initial;
+                }
+        }
+
+        td {
+            height: 20px;
+            text-align:center;
+        }
+
+        tfoot {
+            :nth-child(1) {
+                text-align: end;
+            }
+            svg {
+                color: red;
+                :hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+#commande {
+    padding: 1rem;
+    display: none;
+
+    p {
+        text-align: justify;
+    }
+    tr {
+        :nth-child(2) {
+            padding-left:10px;
+        }
+    }
+
+    button {
+        font-weight:bolder;
+        font-size: 20px;
+    } 
+}

@@ -1,0 +1,16 @@
+img {
+    object-fit: cover;
+}
+
+button {
+
+    @media only screen and (min-width: 768px) {
+        width: 200px;
+        }
+}
+
+#image_produit {
+    padding-right: 0px;
+    padding-left: 0px;
+
+}

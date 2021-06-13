@@ -1,0 +1,198 @@
+#header {
+  background-color: #F3E9F1;
+}
+#header img {
+  max-width: 160px;
+}
+@media only screen and (min-width: 1024px) {
+  #header img {
+    max-width: 35%;
+    margin: auto;
+  }
+}
+#header #navbarContent {
+  width: 100%;
+}
+#header #navbarContent ul {
+  width: 100%;
+}
+
+#footerItem a {
+  color: white;
+  text-decoration: none;
+}
+#footerItem li {
+  margin-right: 0px;
+}
+
+#productList {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  margin-bottom: 30px;
+}
+@media only screen and (min-width: 768px) {
+  #productList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  #productList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+  }
+}
+#productList .card {
+  border-radius: 10px;
+  max-width: 250px;
+  margin: auto;
+}
+#productList .card img {
+  height: 145px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+#productList .card h2 {
+  height: 75px;
+}
+
+#carouselExampleIndicators {
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #jumbotron {
+    height: 200px;
+  }
+}
+
+#imgJbtr {
+  height: 210px;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  #imgJbtr {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+@media screen and (min-width: 768px) {
+  #imgJbtr {
+    height: 95%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #txtJbtr {
+    margin: auto;
+  }
+}
+
+#content h2 {
+  padding-top: 5px;
+  font-size: 1.3rem;
+}
+#content p#results {
+  padding-top: 6px;
+  padding-right: 0px;
+}
+#content .card {
+  padding: 0px;
+}
+#content .card img {
+  height: 150px;
+}
+@media screen and (min-width: 768px) {
+  #content .card svg {
+    position: relative;
+    right: 3px;
+  }
+}
+
+img {
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  button {
+    width: 200px;
+  }
+}
+
+#image_produit {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#panier {
+  padding: 1rem;
+}
+#panier button {
+  margin-right: 1rem;
+}
+#panier table {
+  width: 100%;
+  display: none;
+}
+#panier table thead {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  #panier table thead {
+    display: table-header-group;
+  }
+}
+#panier table thead :nth-child(1) {
+  text-align: start;
+}
+#panier table th {
+  text-align: center;
+}
+#panier table #productThmb {
+  text-align: start;
+}
+#panier table img {
+  margin: auto;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  #panier table img {
+    display: initial;
+  }
+}
+#panier table td {
+  height: 20px;
+  text-align: center;
+}
+#panier table tfoot :nth-child(1) {
+  text-align: end;
+}
+#panier table tfoot svg {
+  color: red;
+}
+#panier table tfoot svg :hover {
+  cursor: pointer;
+}
+
+#commande {
+  padding: 1rem;
+  display: none;
+}
+#commande p {
+  text-align: justify;
+}
+#commande tr :nth-child(2) {
+  padding-left: 10px;
+}
+#commande button {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */
