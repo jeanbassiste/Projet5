@@ -2,7 +2,7 @@
 
 <html lang="fr">
     <head>
-        <title>Here will be some of my testing with bootstrap</title>
+        <title>Votre panier</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -10,18 +10,18 @@
     </head>
 
 <body>
-    <header id="header">
+    <header id="header"><!--Header commun-->
         <div class="container">
             <div class="row">
                 <nav class="flex-md-column navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand text-center" href="index-3.html" title="Accueil du site NavTest"><img src="./images/orinoco_logo.png" alt="Logo d'Orinoco" /></a>
+                    <a class="navbar-brand text-center" href="index.html" title="Accueil du site NavTest"><img src="./images/orinoco_logo.png" alt="Logo d'Orinoco" /></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div id="navbarContent" class="row collapse navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="col-md-4 text-center nav-item active">
-                                <a class="nav-link" href="index-3.html" title="Liste des produits">Nos produits</a>
+                                <a class="nav-link" href="index.html" title="Liste des produits">Nos produits</a>
                             </li>
                             <li class="col-md-4 text-center nav-item">
                                 <a class="nav-link" href="..." title="Se connecter ou créer un compte">S'identifier</a>
@@ -34,17 +34,23 @@
             </div>
         </div>
     </header>
+
     <main class="container">
+        <!--La première section de la page affiche soit un message et un lien vers l'accueil si le panier est vide ; soit un tableau concernant le panier. Une troisième solution d'affichage du contenu en JS a été choisie, différente de celle de l'accueil et de celle de la page produit-->
         <section id="panier">
             <div>
                 <h2>Votre panier</h2>
             </div>
+
+            <!--Division ne s'affichant que si le panier est vide-->
             <div id="panierVide">
-                <p>Votre panier est vide !</p>
-                <a href='index-3.html'>Adopter un ourson !</a>
+                <p id="test">Votre panier est vide !</p>
+                <a href='index.html'>Adopter un ourson !</a>
             </div>
-            <table id="cartTable" class="table table-striped table-responsive">
-                <thead>
+
+            <!--Division s'affichant si le panier est rempli-->
+            <table id="cartTable" class="table table-striped table-responsive"><!--Tableau affichant le panier-->
+                <thead><!--Head du panier : entête des colonnes-->
                     <tr>
                         <th colspan="2">Produits</th>
                         <th>Prix unitaire</th>
@@ -53,57 +59,63 @@
                         <th>L'abandonner...</th>
                     </tr>
                 </thead>
-                <tfoot>
+                <tfoot><!--Pied du panier : total de la commande-->
                     <tr>
                         <td colspan="4">Total :</td>
-                        <td id="totalPrice">204.00€</td>
+                        <td id="totalPrice"></td>
+                        <!--Bouton pour vider le pannier-->
                         <td id="emptyCart"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                           </svg></td>
                     </tr>
                 </tfoot>
-                <tbody id="cartDisplay">
+                <tbody id="cartDisplay"><!--Corps du tableau : contenu du panier (créé en JS)-->
                 </tbody>
             </table>
         </section>
+
+        <!--La seconde section ne s'affiche que si le panier est rempli et affiche le formulaire de contact du client et le bouton pour passer commande-->
         <section id="commande">
+            <!--Messages d'usage-->
             <div>
                 <h2>Passez votre commande</h2>
             </div>
             <div>
                 <p>Votre panier est conforme à votre commande ? Remplissez le formulaire pour passer votre commande !</p>
             </div>
-            <form id="contactForm" action="">
-                <table>
-                    <tr>
-                        <td><label for="fname">Nom :</label></td>
-                        <td><input type="text" id="fname" name="fname" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="lname">Prénom :</label></td>
-                        <td><input type="text" id="lname" name="lname" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="address">Adresse :</label></td>
-                        <td><input type="text" id="address" name="address" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="city">Ville :</label></td>
-                        <td><input type="text" id="city" name="city" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="email">Email :</label></td>
-                        <td><input type="email" id="email" name="email" required></td>
-                    </tr>
-                </table>
-                <button id="envoi" class="btn btn-success col-12 col-md-3 rounded-pill my-3" type="button" data-bs-toggle="" data-bs-target="">Adoptez vos oursons !</button>
+
+            <!--Formulaire de contact-->
+            <form id="contactForm" novalidate action="">
+                <div class="form-row d-flex">
+                        <div class="col-6 mb-3 px-1"><input type="text" class="form-control" id="fname" autocomplete="off" name="fname" placeholder="Nom*"style="text-transform: uppercase;"></div>
+                        <div class="col-6 mb-3 px-1"><input type="text" class="form-control" id="lname" autocomplete="off" name="lname" placeholder="Prénom*"></div>
+                </div>
+                <div class="form-row d-flex">
+                        <div class="col mb-3 px-1"><input type="text" class="form-control" id="address" autocomplete="off" name="address" placeholder="Adresse*" maxlength="50"></div>
+                </div>
+                <div class="form-row d-flex">
+                        <div class="col-6 col-md-2 mb-3 px-1"><input type="" class="form-control" autocomplete="off" id="postCode" name="postCode" placeholder="Code Postal*" minlength="5" maxlength="5" ></div>
+                        <div class="col-6 col-md-10 mb-3 px-1"><input type="text" class="form-control" autocomplete="off" id="city" name="city" placeholder="Ville*" maxlength="40"></div>
+                </div>
+                <div class="form-row d-flex">
+                        <div class="col mb-3 px-1"><input type="email" class="form-control" id="email" autocomplete="off" name="email" placeholder="Adresse email*" ></div>
+                </div>
+                <p class="fst-italic">* Champ requis</p>
+
+                <!--Bouton de soumission du formulaire-->
+                <div class="row">
+                    <div class="text-center">
+                        <button id="envoi" class="btn btn-success col-12 col-md-6 rounded-pill my-3" type="button" data-bs-toggle="" data-bs-target="">Adoptez vos oursons !</button>
+                    </div>
+                </div>
             </form>
-            <p id="errorMessage"></p>
+
+            <p id="errorMessage">Veuillez remplir le formulaire correctement</p><!--Message d'erreur, qui ne s'affiche que si l'utilisateur a clické sur le bouton submit avec une information erronée ou non-remplie-->
         </section>
     </main>
 
-    <footer id="footer" class="bg-secondary text-white">
+    <footer id="footer" class="bg-secondary text-white"><!--Footer commun-->
         <div class="container">
                 <ul id="footerItem" class="row list-inline text-left text-lg-center">
                     <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:..." title="Contacter le service client">Service client</a></li>
@@ -116,7 +128,8 @@
                 </div>
         </div>
     </footer>
-    <script src="js/cart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <script src="js/cart.js"></script><!--Javascript de la page-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script><!--Bootstrap-->
 </body>
 </html>

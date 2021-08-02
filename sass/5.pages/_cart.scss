@@ -1,5 +1,9 @@
+section {
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
 #panier {
-    padding: 1rem;
 
     button {
         margin-right: 1rem;
@@ -8,6 +12,11 @@
     table {
         width: 100%;
         display: none;
+        svg {
+            :hover{
+                cursor: pointer;
+            }
+        }
 
         thead {
             display: none;
@@ -50,18 +59,15 @@
             :nth-child(1) {
                 text-align: end;
             }
-            svg {
+            svg{
                 color: red;
-                :hover{
-                    cursor: pointer;
-                }
             }
+
         }
     }
 }
 
 #commande {
-    padding: 1rem;
     display: none;
 
     p {
@@ -77,4 +83,26 @@
         font-weight:bolder;
         font-size: 20px;
     } 
+
+    input{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        &:invalid{
+            border: 1px solid black;;
+        }
+        &:valid{
+            border: 1px solid black;
+        }
+
+    }
+
+    #city{
+        text-transform: uppercase;
+    }
+
+    #errorMessage{
+        color:red;
+        font-style: italic;
+        display:none;
+    }
 }

@@ -3,9 +3,11 @@
 }
 
 #jumbotron {
-    @media screen and (min-width: 768px){
-        height: 200px;
-    }
+        @media screen and (min-width: 768px){
+            height: 300px;
+        }
+        padding-top: 0px;
+
 }
 
 #imgJbtr {
@@ -28,8 +30,6 @@
 }
 
 #content {
-
-
     h2 {
         padding-top: 5px;
         font-size: 1.3rem;
@@ -54,6 +54,21 @@
             @media screen and  (min-width: 768px) {
                 position: relative;
                 right: 3px;
+            }
+        }
+    }
+}
+
+#productList {
+    .card {
+        width: 100%;
+
+        .row {
+            padding-left: 10px;
+            padding-right: 10px;
+            
+            a{
+                width: 100%;
             }
         }
     }

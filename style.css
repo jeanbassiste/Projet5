@@ -63,9 +63,12 @@
   height: 100%;
 }
 
+#jumbotron {
+  padding-top: 0px;
+}
 @media screen and (min-width: 768px) {
   #jumbotron {
-    height: 200px;
+    height: 300px;
   }
 }
 
@@ -112,6 +115,17 @@
   }
 }
 
+#productList .card {
+  width: 100%;
+}
+#productList .card .row {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#productList .card .row a {
+  width: 100%;
+}
+
 img {
   object-fit: cover;
 }
@@ -122,20 +136,30 @@ img {
   }
 }
 
+#ficheProduit {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 #image_produit {
   padding-right: 0px;
   padding-left: 0px;
 }
 
-#panier {
-  padding: 1rem;
+section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
+
 #panier button {
   margin-right: 1rem;
 }
 #panier table {
   width: 100%;
   display: none;
+}
+#panier table svg :hover {
+  cursor: pointer;
 }
 #panier table thead {
   display: none;
@@ -176,12 +200,8 @@ img {
 #panier table tfoot svg {
   color: red;
 }
-#panier table tfoot svg :hover {
-  cursor: pointer;
-}
 
 #commande {
-  padding: 1rem;
   display: none;
 }
 #commande p {
@@ -193,6 +213,35 @@ img {
 #commande button {
   font-weight: bolder;
   font-size: 20px;
+}
+#commande input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#commande input:invalid {
+  border: 1px solid black;
+}
+#commande input:valid {
+  border: 1px solid black;
+}
+#commande #city {
+  text-transform: uppercase;
+}
+#commande #errorMessage {
+  color: red;
+  font-style: italic;
+  display: none;
+}
+
+#confirmationPage {
+  margin-top: 20px;
+  text-align: center;
+}
+#confirmationPage h2 {
+  margin-bottom: 20px;
+}
+#confirmationPage #montantTotal {
+  font-style: italic;
 }
 
 /*# sourceMappingURL=style.css.map */

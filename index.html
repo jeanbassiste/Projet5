@@ -2,7 +2,7 @@
 
 <html lang="fr">
     <head>
-        <title>Here will be some of my testing with bootstrap</title>
+        <title>Catalogue : les ours en peluche sur Orinoco</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -10,18 +10,25 @@
     </head>
 
 <body>
-    <header id="header">
+    <!--Le header, commun à toutes les pages, contient le logo du site, clickable et qui renvoie sur la page d'accueil ; et une liste de trois liens : l'accueil, la page de connexion (non fonctionnelle dans ce mvp) et le panier-->
+    <header id="header"> 
         <div class="container">
             <div class="row">
                 <nav class="flex-md-column navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand text-center" href="index-3.html" title="Accueil du site NavTest"><img src="./images/orinoco_logo.png" alt="Logo d'Orinoco" /></a>
+
+                    <!--Logo du site-->
+                    <a class="navbar-brand text-center" href="index.html" title="Accueil du site NavTest"><img src="./images/orinoco_logo.png" alt="Logo d'Orinoco" /></a>
+
+                    <!--Bouton du menu dépliant pour le site mobile uniquement (retourne la même navigation que le site desktop mais sous uns forme différente)-->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <!--La navigation du site avec ses trois liens cités plus haut-->
                     <div id="navbarContent" class="row collapse navbar-collapse">
                         <ul class="navbar-nav">
                             <li class="col-md-4 text-center nav-item active">
-                                <a class="nav-link" href="index-3.html" title="Liste des produits">Nos produits</a>
+                                <a class="nav-link" href="index.html" title="Liste des produits">Nos produits</a>
                             </li>
                             <li class="col-md-4 text-center nav-item">
                                 <a class="nav-link" href="..." title="Se connecter ou créer un compte">S'identifier</a>
@@ -34,19 +41,22 @@
             </div>
         </div>
     </header>
+
     <main class="container">
+        <!--La première section contient un carousel montrant des images de produits de la catégorie concernée (ici, les ours en peluche). Il a été choisi d'afficher les images à la main et non par requête javascript car, s'il y avait d'avantages de produits, nous n'afficherions pas TOUTES les images et celles-ci seraient sélectionnées à la main, par exemple en fonction des meilleures ventes, ou proposer ces espaces à l'achat de revendeurs présents sur le site-->
         <section id="jumbotron" class="jumbotron row">
             <div id="imgJbtr" class="col-12 col-md-5 col-lg-4">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
+
+                    <div class="carousel-indicators"><!--Boutons d'accès rapide à une image précise-->
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-
                     </div>
-                    <div class="carousel-inner">
+
+                    <div class="carousel-inner"><!--Images du carousel-->
                       <div class="carousel-item active">
                         <img src="./JWDP5/images/teddy_1.jpg" class="d-block w-100" alt="Ours en peluche 1">
                       </div>
@@ -63,46 +73,59 @@
                         <img src="./JWDP5/images/teddy_5.jpg" class="d-block w-100" alt="Ours en peluche 5">
                       </div>
                     </div>
+
+                    <!--Bouton image précédente-->
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
+
+                    <!--Bouton image suivante-->
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
             </div>
-            <div id="txtJbtr" class="col-12 col-md-7 col-lg-8 text-center text-md-start align-middle">
+
+            <div id="txtJbtr" class="col-12 col-md-7 col-lg-8 text-center text-md-start align-middle"><!--Titre principal de la page. Affichage en javascript pour pouvoir réutiliser la structure pour un autre produit-->
                 <h1 id="titrePrincipal"></h1>
                 <p id="texteAccueil"></p>
             </div>
         </section>
+
+        <!--La deuxième section affiche le nombre de produit (sorte de header de la liste)-->
         <section id="content" class="content row">
             <div class="d-flex justify-content-between">
                 <h2>Nos produits</h2>
                 <p id="results"></p>
             </div>
         </section>
+
+        <!--La troisième section est la liste des produits ; c'est elle que le fichier javascript va venir chercher pour y ajouter les éléments renvoyés par la requête fetch (cf feuille js)-->
         <section id="productList">
         </section>
+
     </main>
+
+    <!--Le footer est également commun à toutes les pages. Il contient les liens utiles aux clients et les mentions légales. Rien n'est fonctionnel dans ce mvp et le contenu pourra être rediscuté. -->
     <footer id="footer" class="bg-secondary text-white">
         <div class="container">
-                <ul id="footerItem" class="row list-inline text-left text-lg-center">
+                
+                <ul id="footerItem" class="row list-inline text-left text-lg-center"><!--Liste des liens utiles-->
                     <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:..." title="Contacter le service client">Service client</a></li>
                     <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir notre politique de confidentialité">Politique de confidentialité</a></li>
                     <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Lire nos conditions d'utilisation">Conditions générales de vente</a></li>
                     <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir le plan du site">Plan du site</a></li>
                 </ul>
-                <div class="row text-center">
+
+                <div class="row text-center"><!--Mentions légales-->
                     <p class="col">Orinoco ⓒ 2021</p>
                 </div>
         </div>
     </footer>
-    <script src="./js/library.js"></script>
-    <script src="./js/fetch copy 2.js"></script>
-    <script src="./js/scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <script src="./js/catalogue.js"></script><!--Javascript de la page-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script><!--Bootstrap-->
 </body>
 </html>
