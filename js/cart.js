@@ -120,7 +120,7 @@ function isValid(donnee){
     let data = donnee.value;
     let valid;
     let result;
-    let emptyData = new RegExp(/\s+/);
+    let emptyData = new RegExp(/^[\s]/);
 
     if (data === null || emptyData.test(data) === true){ //D'abord, on vérifie que le champ n'est pas vide ou seulement composé d'espaces
         result = false;
@@ -133,7 +133,7 @@ function isValid(donnee){
         valid = new RegExp(/[0-9]{5}/);
     }
     else if(dataType === 'address'){//pattern de validation pour le champ adresse : chiffre, lettres, espaces, virgules, tirets
-        valid = new RegExp(/[a-zA-Z0-9_]/);
+        valid = new RegExp(/[a-zA-Z0-9_\s]/);
     }
     else if(dataType === 'fname' || dataType === 'lname'){//pattern de validation pour les noms et prénoms : lettres et espaces
         valid = new RegExp(/[A-Za-z]/);
@@ -173,7 +173,7 @@ function passOrder(ev){
     ev.preventDefault();
 
     //On vérifie que tous les champs sont valides. Si oui, on déclenche la fonction fetch pour envoyer les données et récupérées l'order id puis on vide le panier et on ouvre une nouvelle page "confirmation"; avec l'order id récupéré en fetch et le montant total de la commande en paramètre d'url
-    if(isValid(fnameData) && isValid(lnameData) && isValid(addressData) && isValid(postCodeData) && isValid(emailData)/* && isValid(cityData)*/){
+    if(isValid(fnameData) && isValid(lnameData) && isValid(addressData) && isValid(postCodeData) && isValid(emailData) && isValid(cityData)){
         //console.log('Its all good man');
         let infoClient = {
             firstName: document.getElementById('fname').value,
