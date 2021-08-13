@@ -13,27 +13,93 @@ const getProduct = `${url}/${OursonId}`;
 let cartContent = [];
 
 //Récupération des blocs HTML qui seront utiles à la création du message d'ajout au panier
-let textBouton = document.querySelector("#panier > p");
+let textBouton = document.getElementById('panier');
 let svgBouton = document.querySelector("#panier > svg");
 
 //Fonction qui affiche le produit sur le site en remplissant la fiche produit HTML avec les infos récupérées dans la requête fetch
 function createProduct(value) {
-    //Récupération des blocs HTML où chaque info s'affichera
-    var imgSrc = document.getElementById('image_produit');
-    var name = document.getElementById('name_produit');
-    var desc = document.getElementById('description_produit');
-    var price = document.getElementById('price_produit');
-    var button = document.getElementById('panier');
-    var price_produit = value.price/100; //Mise en forme du prix du produit
 
-    //Remplissage des blocs HTML avec les informations entrées en paramètres dans la fonction, c'est-à-dire la réponse de la requête fetch
-    name.innerText = `${value.name}`;
-    desc.innerText = `${value.description}`;
-    price.innerText = `${price_produit.toFixed(2)} €`;
+    let container = document.createElement('div');
+    container.setAttribute('class', 'row');
+
+    let imgSrc = document.createElement('img');
+    imgSrc.setAttribute('id', 'image_produit');
+    imgSrc.setAttribute('class', 'col-12 col-md-6');
+    imgSrc.setAttribute('alt', 'Photo du produit');
     imgSrc.src = `${value.imageUrl}`;
+    container.appendChild(imgSrc);
 
+    let textProduit = document.createElement('div');
+    textProduit.setAttribute('id', 'text_produit');
+    textProduit.setAttribute('class', 'col-12 col-md-6');
+
+    let nameProduit = document.createElement('h1');
+    nameProduit.setAttribute('id', 'name_produit');
+    nameProduit.textContent = `${value.name}`;
+    textProduit.appendChild(nameProduit);
+
+    let desc = document.createElement('p');
+    desc.setAttribute('id', 'description_produit');
+    desc.textContent = `${value.description}`;
+    textProduit.appendChild(desc);
+
+    let price = document.createElement('h2');
+    let price_produit = value.price/100; //Mise en forme du prix du produit
+    price.setAttribute('id', 'price_produit');
+    price.textContent = `${price_produit.toFixed(2)} €`;
+    textProduit.appendChild(price);
+
+    let colorForm = document.createElement('form');
+    colorForm.setAttribute('id', 'choix_couleur');
+    colorForm.setAttribute('class', 'my-3');
+    let colorLabel = document.createElement('label');
+    colorLabel.setAttribute('for', 'couleur');
+    colorLabel.setAttribute('class', 'fw-bold');
+    colorLabel.textContent = 'Couleur :';
+    colorForm.appendChild(colorLabel);
+    let colorSelect = document.createElement('select');
+    colorSelect.setAttribute('name', 'couleur');
+    colorSelect.setAttribute('id', 'couleur');
+    for (let i=0; i<value.colors.length; i++)
+    {
+        let colorChoice = document.createElement('option');
+        colorChoice.setAttribute('value', `coul${i}`);
+        colorChoice.textContent = `${value.colors[i]}`;
+        colorSelect.appendChild(colorChoice);
+    }
+    colorForm.appendChild(colorSelect);
+    textProduit.appendChild(colorForm);
+
+    let qtyForm = document.createElement('form');
+    qtyForm.setAttribute('class', 'my-3');
+    let qtyLabel = document.createElement('label');
+    qtyLabel.setAttribute('for', 'qty');
+    qtyLabel.setAttribute('class', 'fw-bold');
+    qtyLabel.textContent = 'Quantité :';
+    qtyForm.appendChild(qtyLabel);
+    let qtyInput = document.createElement('input');
+    qtyInput.setAttribute('id', 'qty');
+    qtyInput.setAttribute('type', 'number');
+    qtyInput.setAttribute('name', 'quantité');
+    qtyInput.setAttribute('min', '1');
+    qtyInput.setAttribute('value', '1');
+    qtyInput.setAttribute('required', '');
+    qtyInput.setAttribute('onKeyDown', 'return false');
+    qtyForm.appendChild(qtyInput);
+    textProduit.appendChild(qtyForm);
+
+    let button = document.createElement('button');
+    button.setAttribute('id', 'panier');
+    button.setAttribute('class', 'btn btn-success rounded-pill my-3');
+    button.setAttribute('type', 'button');
+    button.setAttribute('data-bs-toggle', '');
+    button.setAttribute('data-bs-target', '');
     button.setAttribute('productId', value._id);
     button.addEventListener('click', addItem);
+    button.textContent = 'Ajouter au panier';
+    textProduit.appendChild(button);
+
+    container.appendChild(textProduit);
 
     //Fonction qui déclenche l'ajout au panier lors du click
     function addItem(ev){
@@ -47,22 +113,16 @@ function createProduct(value) {
         addToCart(value, Qty); //On fait tourner la fonction d'ajout au panier en passant l'id du produit et la quantité en paramètres
         
         //Puis on déclenche une petite animation en feedback pour informer le client du succès de sa requête
-        svgBouton.style.display = 'none';
-        textBouton.innerText = `Ajout de l'ourson au panier en ${Qty} exemplaires`
+        button.textContent = `Ajout de l'ourson au panier en ${Qty} exemplaires`
         setTimeout(function(){
-            textBouton.innerText = "Ajouter au panier"; 
-            svgBouton.style.display = 'initial';
+            button.textContent = "Ajouter au panier"; 
         }, 2000); //Après 2s, le display du bouton revient à la normale
     }
+
+    return(container);
 }
 
-//fonction qui permet l'affichage des différentes options de personnalisation du produit (couleur de l'ourson)
-function couleur(value) {
-    for (let i=0; i<value.colors.length; i++)
-     {
-        document.getElementById('couleur').innerHTML += `<option value="coul${i}">${value.colors[i]}</option>`;
-    }
-};
+
 
 
 //Requête fetch sur le serveur pour obtenir les informations du produit
@@ -78,11 +138,15 @@ fetch(getProduct)
         },
         (networkError) => {
             console.log(networkError.message);
+            let errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'initial';
         }
     )
     .then((jsonResponse) => { //Si la requête est un succès, on délenche les deux fonctions (affichage de la fiche produit et du menu de personnalisation du produit)
-        createProduct(jsonResponse);
-        couleur(jsonResponse);
+        let ficheProduit = createProduct(jsonResponse);
+        let displayProduit = document.getElementById('ficheProduit');
+
+        displayProduit.appendChild(ficheProduit);
     }
 )
 

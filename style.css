@@ -146,6 +146,10 @@ img {
   padding-left: 0px;
 }
 
+#errorMessage {
+  display: none;
+}
+
 section {
   padding-top: 1rem;
   padding-bottom: 1rem;

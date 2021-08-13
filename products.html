@@ -25,12 +25,13 @@
                                     <a class="nav-link" href="index.html" title="Liste des produits">Nos produits</a>
                                 </li>
                                 <li class="col-md-4 text-center nav-item">
-                                    <a class="nav-link" href="..." title="Se connecter ou créer un compte">S'identifier</a>
+                                    <a class="nav-link" href="#" title="Se connecter ou créer un compte">S'identifier</a>
                                 </li>
                                 <li class="col-md-4 text-center nav-item">
                                     <a class="nav-link" href="cart.html" title="Voir le contenu de votre panier">Panier</a>
                                 </li>
                             </ul>
+                        </div>
                     </nav>
                 </div>
             </div>
@@ -38,48 +39,17 @@
 
         <!--L'unique section correspond à la fiche produit. Elle affichera les informations récupérées en javascript grâce à la requête fetch sur le serveur. Ici la stratégie est différente de la page d'accueil : on a créé le squelette de l'affichage en html/css et on ajoutera seulement le contenu en JS-->
         <section id="ficheProduit" class="container">
-        <div class="row">
-
-            <img id="image_produit" class="col-12 col-md-6" alt="description produit" /><!--1ère partie de la fiche : Image du produit-->
-
-            <div id="text_produit" class="col-12 col-md-6"><!--2ème partie de la fiche : infos produit-->
-                <h1 id="name_produit"></h1>
-                <p id="description_produit"></p>
-                <h2 id="price_produit"></h2>
-                <p id="cart"></p>
-
-                <!--Menu déroulant : choix de la couler (non-fonctionnelle dans le MVP)-->
-                <form id="choix_couleur" class="my-3">
-                    <label for="color" class="fw-bold">Couleur :</label>
-                    <select name="couleur" id="couleur">
-                    </select>
-                </form>
-
-                <!--Choix de la quantité ; impossible de taper la quantité à la main, on augment ou diminue grâce aux flèches ou au clavier-->
-                <form class="my-3">
-                    <label for="quantity" class="fw-bold">Quantité :</label>
-                    <input id="qty" type="number" name="quantité" min="1" value="1" required="" onKeyDown="return false"/>
-                </form>
-
-                <!--Bouton d'ajout au panier ; déclenche la fonction correspondante en javascript, cf feuille js-->
-                <button id="panier" class="btn btn-success rounded-pill my-3" type="button" data-bs-toggle="" data-bs-target="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>        
-                    <p>Ajouter au panier</p>                        
-                </button>
-            </div>
-        </div>
+            <h2 id="errorMessage">Ourson manquant, impossible d'afficher ce produit.</h2>
         </section>
 
         <!--Footer commun-->
         <footer id="footer" class="bg-secondary text-white">
             <div class="container">
                 <ul id="footerItem" class="row list-inline text-left text-lg-center">
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:..." title="Contacter le service client">Service client</a></li>
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir notre politique de confidentialité">Politique de confidentialité</a></li>
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Lire nos conditions d'utilisation">Conditions générales de vente</a></li>
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir le plan du site">Plan du site</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:orinoco@orinoco.fr" title="Contacter le service client">Service client</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="#" title="Voir notre politique de confidentialité">Politique de confidentialité</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="#" title="Lire nos conditions d'utilisation">Conditions générales de vente</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="#" title="Voir le plan du site">Plan du site</a></li>
                 </ul>
                 <div class="row text-center">
                     <p class="col">Orinoco ⓒ 2021</p>

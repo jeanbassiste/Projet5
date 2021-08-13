@@ -14,7 +14,45 @@ titrePrincipal.innerText = `Découvrez nos ${catalogue.category} !`;
 const texteAccueil = document.getElementById('texteAccueil');
 texteAccueil.innerText = `Orinoco propose un large choix d'${catalogue.category} aux meilleurs prix ! ${catalogue.description}`;
 
+//fonction pour créer les cartes produits du catalogue
+function createProductCard(element){
+  let card = document.createElement('div'); //On crée la carte
+  card.setAttribute('class', 'card');
+  
+  let cardImage = document.createElement('img'); //On ajoute l'image
+  cardImage.setAttribute('class', 'card-img-top');
+  cardImage.setAttribute('src', `${element.imageUrl}`);
+  cardImage.setAttribute('alt', `L'ourson ${element.name}`);
+  card.appendChild(cardImage);
 
+  let cardBody = document.createElement('div'); //Partie texte de la carte
+  cardBody.setAttribute('class', 'card-body');
+
+  let productName = document.createElement('h2'); //Nom du produit
+  productName.setAttribute('class', 'card-title');
+  productName.textContent = `${element.name}`;
+  cardBody.appendChild(productName);
+
+  let productPrice = document.createElement('p'); //Prix du produit
+  let realPrice = element.price/100;
+  productPrice.setAttribute('class', 'card-text');
+  productPrice.textContent = `${realPrice.toFixed(2)} €`;
+  cardBody.appendChild(productPrice);
+
+  let linkButton = document.createElement('div'); //Bloc lien
+  linkButton.setAttribute('class', 'row d-flex justify-content-around');
+
+  let link = document.createElement('a'); //Lien vers la page produit dédiée
+  link.setAttribute('class', 'btn btn-primary col-9');
+  link.setAttribute('title', "Voir l'ourson");
+  link.setAttribute('href', `./products.html?id=${element._id}`);
+  link.textContent = "Voir l'ourson";
+  linkButton.appendChild(link);
+
+  cardBody.appendChild(linkButton); //On ajoute les éléments 
+  card.appendChild(cardBody);
+  return(card);
+} 
 
 //Fonction fetch pour récupérer les informations des produits et créer la page catalogue
 const url2 = "http://localhost:3000/api/teddies"; //url du server qui contient les infos
@@ -26,30 +64,21 @@ fetch(url2) //on réalise la requête fetch sur le server
       if (response.ok) { //si la requête est bonne et renvoie une réponse valide, on la convertit en json pour pouvoir la réutiliser
         return response.json();
       }
-      else { //S'il y a un problème et que la requête échoue, on affiche un message d'erreur
+      else { 
         throw new Error("Impossible de générer les oursons");} 
-        console.log(Error);
     },
-    (networkError) => {
+    (networkError) => {//S'il y a un problème et que la requête échoue, on affiche un message d'erreur
       console.log(networkError.message);
+      let erreurServeur = document.createElement('p');
+      erreurServeur.textContent = 'Erreur serveur, impossible de générer les oursons.'; 
+      productList.appendChild(erreurServeur);
     }
   )
   .then((jsonResponse) => { //Si la requête a fonctionné correctement on affiche le catalogue à partir des éléments renvoyés par la requête dans le fichier json
     const nombreProduits = document.getElementById("results");
     jsonResponse.forEach(element =>{ //Boucle : pour chaque élément contenu dans la réponse, on crée un élément html qui correspond à l'ourson concerné
-      let realPrice = element.price/100;
-      productList.innerHTML += 
-      `<div class="card">
-      <img class="card-img-top" src="${element.imageUrl}" alt="L'ourson ${element.name}">
-      <div class="card-body">
-          <h2 class="card-title">${element.name}</h2>
-          <p class="card-text">${realPrice.toFixed(2)} €</p>
-          <div class="row d-flex justify-content-around">
-              <a href="./products.html?id=${element._id}" class="btn btn-primary col-9">Voir l'ourson</a>                          
-          </div>                       
-      </div>
-      </div>
-      </div>`
+      let product = createProductCard(element);
+      productList.appendChild(product);
     });
     nombreProduits.innerText = `${jsonResponse.length}` //On affiche le nombre total de produits sur la page html
      });

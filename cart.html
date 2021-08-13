@@ -24,12 +24,13 @@
                                 <a class="nav-link" href="index.html" title="Liste des produits">Nos produits</a>
                             </li>
                             <li class="col-md-4 text-center nav-item">
-                                <a class="nav-link" href="..." title="Se connecter ou créer un compte">S'identifier</a>
+                                <a class="nav-link" href="#" title="Se connecter ou créer un compte">S'identifier</a>
                             </li>
                             <li class="col-md-4 text-center nav-item">
                                 <a class="nav-link" href="cart.html" title="Voir le contenu de votre panier">Panier</a>
                             </li>
                         </ul>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -59,6 +60,8 @@
                         <th>L'abandonner...</th>
                     </tr>
                 </thead>
+                <tbody id="cartDisplay"><!--Corps du tableau : contenu du panier (créé en JS)-->
+                </tbody>
                 <tfoot><!--Pied du panier : total de la commande-->
                     <tr>
                         <td colspan="4">Total :</td>
@@ -70,8 +73,6 @@
                           </svg></td>
                     </tr>
                 </tfoot>
-                <tbody id="cartDisplay"><!--Corps du tableau : contenu du panier (créé en JS)-->
-                </tbody>
             </table>
         </section>
 
@@ -86,16 +87,16 @@
             </div>
 
             <!--Formulaire de contact-->
-            <form id="contactForm" novalidate action="">
+            <form id="contactForm" novalidate>
                 <div class="form-row d-flex">
-                        <div class="col-6 mb-3 px-1"><input type="text" class="form-control" id="fname" autocomplete="off" name="fname" placeholder="Nom*"style="text-transform: uppercase;"></div>
+                        <div class="col-6 mb-3 px-1"><input type="text" class="form-control" id="fname" autocomplete="off" name="fname" placeholder="Nom*" style="text-transform: uppercase;"></div>
                         <div class="col-6 mb-3 px-1"><input type="text" class="form-control" id="lname" autocomplete="off" name="lname" placeholder="Prénom*"></div>
                 </div>
                 <div class="form-row d-flex">
                         <div class="col mb-3 px-1"><input type="text" class="form-control" id="address" autocomplete="off" name="address" placeholder="Adresse*" maxlength="50"></div>
                 </div>
                 <div class="form-row d-flex">
-                        <div class="col-6 col-md-2 mb-3 px-1"><input type="" class="form-control" autocomplete="off" id="postCode" name="postCode" placeholder="Code Postal*" minlength="5" maxlength="5" ></div>
+                        <div class="col-6 col-md-2 mb-3 px-1"><input type="text" class="form-control" autocomplete="off" id="postCode" name="postCode" placeholder="Code Postal*" minlength="5" maxlength="5" ></div>
                         <div class="col-6 col-md-10 mb-3 px-1"><input type="text" class="form-control" autocomplete="off" id="city" name="city" placeholder="Ville*" maxlength="40"></div>
                 </div>
                 <div class="form-row d-flex">
@@ -118,10 +119,10 @@
     <footer id="footer" class="bg-secondary text-white"><!--Footer commun-->
         <div class="container">
                 <ul id="footerItem" class="row list-inline text-left text-lg-center">
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:..." title="Contacter le service client">Service client</a></li>
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir notre politique de confidentialité">Politique de confidentialité</a></li>
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Lire nos conditions d'utilisation">Conditions générales de vente</a></li>
-                    <li class="col-12 col-lg-3 list-inline-item"><a href="..." title="Voir le plan du site">Plan du site</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="mailto:orinoco@orinoco.fr" title="Contacter le service client">Service client</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="#" title="Voir notre politique de confidentialité">Politique de confidentialité</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="#" title="Lire nos conditions d'utilisation">Conditions générales de vente</a></li>
+                    <li class="col-12 col-lg-3 list-inline-item"><a href="#" title="Voir le plan du site">Plan du site</a></li>
                 </ul>
                 <div class="row text-center">
                     <p class="col">Orinoco ⓒ 2021</p>
