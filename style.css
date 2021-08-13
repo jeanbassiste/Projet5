@@ -237,6 +237,10 @@ section {
   display: none;
 }
 
+#ligneVide {
+  display: none;
+}
+
 #confirmationPage {
   margin-top: 20px;
   text-align: center;
